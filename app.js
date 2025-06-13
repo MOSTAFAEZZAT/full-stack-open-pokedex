@@ -1,9 +1,8 @@
-import express from 'express'
+/* eslint-disable no-undef */
+const express = require('express')
 const app = express()
-import 'dotenv/config'
 
-// Ensure process.env is defined or provide a fallback
-// eslint-disable-next-line no-undef
+// get the port from env variable
 const PORT = process.env.PORT || 5000
 
 app.use(express.static('dist'))
