@@ -18,3 +18,8 @@ jobs:
 
       - name: Check style
         run: npm run eslint
+      - name: Deploy to Fly.io
+        env:
+          FLY_TOKEN: ${{ secrets.FLY_TOKEN }}
+        run: fly deploy --remote-only --config fly.toml
+        rnd_G1zcJOLxFMhEQeAXLgyBjRaBBFrV
