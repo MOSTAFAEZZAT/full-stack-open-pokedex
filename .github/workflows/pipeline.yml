@@ -20,9 +20,10 @@ jobs:
         run: npm run eslint
       - name: Set up Fly CLI
         uses: superfly/flyctl-actions/setup-flyctl@master
+
       - name: Deploy to Fly.io
         env:
           FLY_TOKEN: ${{ secrets.FLY_TOKEN }}
-        run: fly deploy --remote-only
+        run: flyctl deploy --remote-only
       - name: Trigger deployment
         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
