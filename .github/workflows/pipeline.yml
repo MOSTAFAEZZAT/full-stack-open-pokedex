@@ -18,6 +18,8 @@ jobs:
 
       - name: Check style
         run: npm run eslint
+      - name: Set up Fly CLI
+        uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Deploy to Fly.io
         env:
           FLY_TOKEN: ${{ secrets.FLY_TOKEN }}
