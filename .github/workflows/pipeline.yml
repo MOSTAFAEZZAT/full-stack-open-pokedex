@@ -25,5 +25,6 @@ jobs:
         env:
           FLY_TOKEN: ${{ secrets.FLY_TOKEN }}
         run: flyctl deploy --remote-only
+
       - name: Trigger deployment
         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
