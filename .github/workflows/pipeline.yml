@@ -23,7 +23,7 @@ jobs:
 
       - name: Deploy to Fly.io
         env:
-          FLY_TOKEN: ${{ secrets.FLY_TOKEN }}
+          FLY_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         run: flyctl deploy --remote-only
 
       - name: Trigger deployment
