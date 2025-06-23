@@ -22,4 +22,5 @@ jobs:
         env:
           FLY_TOKEN: ${{ secrets.FLY_TOKEN }}
         run: fly deploy --remote-only --config fly.toml
-        rnd_G1zcJOLxFMhEQeAXLgyBjRaBBFrV
+      - name: Trigger deployment
+        run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
