@@ -12,6 +12,8 @@ app.get('/version', (req, res) => {
 })
 
 app.get('/health', (req, res) => {
+  console.log('health check');
+  console.log('Merge with Main');
   res.send('ok')
   console.log('health check and version check passed')
 })
