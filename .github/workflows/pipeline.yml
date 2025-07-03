@@ -18,11 +18,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.73.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      
       - name: Install dependencies 
         run: npm install  
 
@@ -39,3 +35,12 @@ jobs:
 
       - name: Trigger deployment
         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
+    
+  tag_release:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Bump version and push tag
+          uses: anothrNick/github-tag-action@1.73.0
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            DEFAULT_BUMP: patch
