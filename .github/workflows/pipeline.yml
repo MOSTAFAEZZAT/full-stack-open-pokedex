@@ -50,3 +50,20 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         DEFAULT_BUMP: patch
+
+    - name: Test Success
+      uses: rjstone/discord-webhook-notify@v2.2.1
+      if: success()
+      with:
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          severity: info
+          details: All checks passed!
+
+    - name: Test Failure
+      uses: rjstone/discord-webhook-notify@v2.2.1
+      if: failure()
+      with:
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          severity: info
+          details: Something went wrong, check the logs!
+    

@@ -18,7 +18,10 @@ jobs:
         env:
           COMMITS: ${{ toJson(github.event.commits) }}
         run: echo "$COMMITS"
-      - name: commit messages
-        env:
-          COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-        run: echo "$COMMIT_MESSAGES"
+      - name: Set commit messages
+        id: commit_messages
+        run: echo "messages<<EOF" >> $GITHUB_OUTPUT && echo "${{ toJson(github.event.commits.*.message) }}" >> $GITHUB_OUTPUT && echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Print commit messages
+        if: ${{ !contains(join(github.event.commits.*.message, ' '), 'skip') }}
+        run: echo "${{ steps.commit_messages.outputs.messages }}"
