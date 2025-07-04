@@ -58,6 +58,7 @@ jobs:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           severity: info
           details: All checks passed!
+          username: mostafa 
 
     - name: Test Failure
       uses: rjstone/discord-webhook-notify@v2.2.1
