@@ -60,12 +60,10 @@ jobs:
           details: All checks passed!
           username: mostafa 
 
-    - name: Test Failure
-      uses: rjstone/discord-webhook-notify@v2.2.1
-      if: failure()
+    - name: Discord notification
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+      uses: Ilshidur/action-discord@master
       with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          severity: info
-          details: Something went wrong, check the logs!
-          username: mostafa 
+        args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed.'
     
