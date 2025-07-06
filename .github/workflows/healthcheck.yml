@@ -1,3 +1,4 @@
+name: Health Check Workflow
 on:
   schedule:
     - cron: '*/10 * * * *'
