@@ -66,4 +66,7 @@ jobs:
       uses: Ilshidur/action-discord@master
       with:
         args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed.'
-    
+    - name: Peroidic Health Check
+      uses: jtalk/url-health-check-action@v4
+      with:
+          
